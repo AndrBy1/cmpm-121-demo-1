@@ -10,5 +10,6 @@ header.innerHTML = gameName;
 app.append(header);
 
 const button = document.createElement("button");
-button.textContent = 🫀;
+button.textContent = "🫨";
 app.append(button);
+

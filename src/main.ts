@@ -5,6 +5,9 @@ const app: HTMLDivElement = document.querySelector("#app")!;
 const gameName = "A game"; //step 7: small change
 document.title = gameName;
 
+let count: number = 0;
+let trackFrame = 0;
+
 const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
@@ -14,10 +17,9 @@ button.textContent = "🫨";
 app.append(button);
 
 const upgradeButton = document.createElement("button");
-button.textContent = "upgrade";
+upgradeButton.textContent = "upgrade";
 app.append(upgradeButton);
 
-let count: number = 0;
 const counter = document.createElement("div");
 counter.textContent = `${count} slaps`;
 app.append(counter);
@@ -31,7 +33,7 @@ const autoClick = setInterval(() => {
   AddToCount();
 }, 600);*/
 
-let trackFrame = 0;
+
 requestAnimationFrame(animate);
 const startFrame = performance.now();
 console.log("start: " + startFrame);

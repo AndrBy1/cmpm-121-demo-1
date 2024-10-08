@@ -26,6 +26,12 @@ const autoClick = setInterval(() => {
   AddToCount();
 }, 600);*/
 
+requestAnimationFrame(animate);
+
+function animate(){
+  AddToCount();
+  requestAnimationFrame(animate)
+}
 
 function AddToCount() {
   count += 1;
@@ -33,3 +39,5 @@ function AddToCount() {
 }
 
 //console.log(autoClick);
+
+

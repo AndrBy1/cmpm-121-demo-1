@@ -15,8 +15,8 @@ app.append(button);
 
 let count: number = 0;
 button.addEventListener("click", () => {
-    count += 1;
-    counter.textContent = `${count} slaps`;
+  count += 1;
+  counter.textContent = `${count} slaps`;
 });
 
 const counter = document.createElement("div");

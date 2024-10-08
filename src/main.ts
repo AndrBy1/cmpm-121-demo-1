@@ -28,7 +28,12 @@ button.addEventListener("click", () => {
 });
 
 upgradeButton.addEventListener("click", () => {
-  upgrade();
+  if (count >= 10){
+    count -= 10;
+    counter.textContent = `${count} slaps`;
+    upgrade();
+  }
+  
 });
 
 /*

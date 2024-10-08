@@ -2,11 +2,10 @@ import "./style.css";
 
 const app: HTMLDivElement = document.querySelector("#app")!;
 
-const gameName = "A game"; //step 7: small change
+const gameName = "A game";
 document.title = gameName;
 
 let count: number = 0;
-let trackFrame = 0;
 
 const header = document.createElement("h1");
 header.innerHTML = gameName;
@@ -28,21 +27,25 @@ button.addEventListener("click", () => {
   AddToCount();
 });
 
+upgradeButton.addEventListener("click", () => {
+  
+  upgrade();
+})
+
 /*
 const autoClick = setInterval(() => {
   AddToCount();
 }, 600);*/
 
-requestAnimationFrame(animate);
-const startFrame = performance.now();
-console.log("start: " + startFrame);
+function upgrade(){
+  requestAnimationFrame(animate);
+}
 
 function animate() {
-  trackFrame++;
-  console.log("track: " + trackFrame);
+  const frame = performance.now();
+  console.log(frame)
   requestAnimationFrame(animate);
-  if (trackFrame - Math.floor(startFrame) == 0) {
-    trackFrame = 0;
+  if (Math.floor(frame) % 1000 <= 6) {
     AddToCount();
   }
 }

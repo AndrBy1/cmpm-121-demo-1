@@ -28,6 +28,9 @@ const autoClick = setInterval(() => {
 
 requestAnimationFrame(animate);
 
+let frame = performance.now();
+
+
 function animate() {
   AddToCount();
   requestAnimationFrame(animate);

@@ -23,11 +23,13 @@ counter.textContent = `${count} slaps`;
 app.append(counter);
 
 const autoClick = setInterval(() => {
-    count = AddToCount(count);
-}, 500)
+  count = AddToCount(count);
+}, 600);
 
 function AddToCount(num: number) {
-    num += 1
-    counter.textContent = `${count} slaps`;
-    return num;
+  num += 1;
+  counter.textContent = `${count} slaps`;
+  return num;
 }
+
+console.log(autoClick);

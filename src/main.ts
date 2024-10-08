@@ -15,8 +15,7 @@ app.append(button);
 
 let count: number = 0;
 button.addEventListener("click", () => {
-  count++;
-  counter.textContent = `${count} slaps`;
+  count = AddToCount(count);
 });
 
 const counter = document.createElement("div");
@@ -24,7 +23,11 @@ counter.textContent = `${count} slaps`;
 app.append(counter);
 
 const autoClick = setInterval(() => {
-    count++;
-    counter.textContent = `${count} slaps`;
+    count = AddToCount(count);
 }, 500)
 
+function AddToCount(num: number) {
+    num += 1
+    counter.textContent = `${count} slaps`;
+    return num;
+}

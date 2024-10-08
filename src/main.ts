@@ -25,16 +25,18 @@ app.append(counter);
 const autoClick = setInterval(() => {
   AddToCount();
 }, 600);*/
+let trackFrame = 0;
 
 requestAnimationFrame(animate);
 const startFrame = performance.now();
 console.log("start: " + startFrame);
 
 function animate() {
-  const setFrame = performance.now();
-  console.log("set: " + setFrame);
+  trackFrame++;
+  console.log("track: " + trackFrame)
   requestAnimationFrame(animate);
-  if (setFrame / startFrame == 1) {
+  if (trackFrame - Math.floor(startFrame) == 0) {
+    trackFrame = 0;
     AddToCount();
   }
 }

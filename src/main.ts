@@ -13,6 +13,10 @@ const button = document.createElement("button");
 button.textContent = "🫨";
 app.append(button);
 
+const upgradeButton = document.createElement("button");
+button.textContent = "upgrade";
+app.append(upgradeButton);
+
 let count: number = 0;
 const counter = document.createElement("div");
 counter.textContent = `${count} slaps`;
@@ -28,10 +32,11 @@ const autoClick = setInterval(() => {
 }, 600);*/
 
 let trackFrame = 0;
-
-requestAnimationFrame(animate);
-const startFrame = performance.now();
-console.log("start: " + startFrame);
+function upgrade(){
+  requestAnimationFrame(animate);
+  const startFrame = performance.now();
+  console.log("start: " + startFrame);
+}
 
 function animate() {
   trackFrame++;

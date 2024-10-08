@@ -12,4 +12,3 @@ app.append(header);
 const button = document.createElement("button");
 button.textContent = "🫨";
 app.append(button);
-

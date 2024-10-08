@@ -15,10 +15,14 @@ app.append(button);
 
 let count: number = 0;
 button.addEventListener("click", () => {
-  count += 1;
-  counter.textContent = `${count} slaps`;
+    count = AddToCount(count)
+    counter.textContent = `${count} slaps`;
 });
 
 const counter = document.createElement("div");
 counter.textContent = `${count} slaps`;
 app.append(counter);
+
+function AddToCount(num: number){
+    return num += 1
+}

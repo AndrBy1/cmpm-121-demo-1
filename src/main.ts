@@ -32,11 +32,9 @@ const autoClick = setInterval(() => {
 }, 600);*/
 
 let trackFrame = 0;
-function upgrade(){
-  requestAnimationFrame(animate);
-  const startFrame = performance.now();
-  console.log("start: " + startFrame);
-}
+requestAnimationFrame(animate);
+const startFrame = performance.now();
+console.log("start: " + startFrame);
 
 function animate() {
   trackFrame++;

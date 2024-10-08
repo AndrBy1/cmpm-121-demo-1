@@ -28,22 +28,21 @@ button.addEventListener("click", () => {
 });
 
 upgradeButton.addEventListener("click", () => {
-  
   upgrade();
-})
+});
 
 /*
 const autoClick = setInterval(() => {
   AddToCount();
 }, 600);*/
 
-function upgrade(){
+function upgrade() {
   requestAnimationFrame(animate);
 }
 
 function animate() {
   const frame = performance.now();
-  console.log(frame)
+  console.log(frame);
   requestAnimationFrame(animate);
   if (Math.floor(frame) % 1000 <= 6) {
     AddToCount();

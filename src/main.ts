@@ -21,16 +21,15 @@ button.addEventListener("click", () => {
 const counter = document.createElement("div");
 counter.textContent = `${count} slaps`;
 app.append(counter);
-
+/*
 const autoClick = setInterval(() => {
   AddToCount();
-}, 600);
+}, 600);*/
 
-//requestAnimationFrame(AddToCount);
 
 function AddToCount() {
   count += 1;
   counter.textContent = `${count} slaps`;
 }
 
-console.log(autoClick);
+//console.log(autoClick);

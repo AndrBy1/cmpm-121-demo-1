@@ -29,7 +29,7 @@ button.addEventListener("click", () => {
 
 upgradeButton.addEventListener("click", () => {
   if (count >= 10) {
-    AddToCount(-10)
+    AddToCount(-10);
     upgrade();
   }
 });
@@ -52,7 +52,7 @@ function animate() {
   }
 }
 
-function AddToCount(inc:number) {
+function AddToCount(inc: number) {
   count += inc;
   counter.textContent = `${count} shakes`;
 }

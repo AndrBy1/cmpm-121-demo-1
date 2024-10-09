@@ -12,7 +12,7 @@ header.innerHTML = gameName;
 app.append(header);
 
 const button = document.createElement("button");
-button.textContent = "🫨";
+button.textContent = "🫨"; //shake emoji
 app.append(button);
 
 const upgradeButton = document.createElement("button");
@@ -20,17 +20,16 @@ upgradeButton.textContent = "upgrade";
 app.append(upgradeButton);
 
 const counter = document.createElement("div");
-counter.textContent = `${count} slaps`;
+counter.textContent = `${count} shakes`;
 app.append(counter);
 
 button.addEventListener("click", () => {
-  AddToCount();
+  AddToCount(1);
 });
 
 upgradeButton.addEventListener("click", () => {
   if (count >= 10) {
-    count -= 10;
-    counter.textContent = `${count} slaps`;
+    AddToCount(-10)
     upgrade();
   }
 });
@@ -49,13 +48,13 @@ function animate() {
   console.log(frame);
   requestAnimationFrame(animate);
   if (Math.floor(frame) % 1000 <= 6) {
-    AddToCount();
+    AddToCount(1);
   }
 }
 
-function AddToCount() {
-  count += 1;
-  counter.textContent = `${count} slaps`;
+function AddToCount(inc:number) {
+  count += inc;
+  counter.textContent = `${count} shakes`;
 }
 
 //console.log(autoClick);

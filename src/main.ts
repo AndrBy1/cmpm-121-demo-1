@@ -38,6 +38,9 @@ const rateCounter = document.createElement("div");
 rateCounter.textContent = `${ratenum} shakes/sec`;
 app.append(rateCounter);
 
+const upgradeCounter = document.createElement("div");
+app.append(upgradeCounter);
+
 button.addEventListener("click", () => {
   AddToCount(1);
 });
@@ -54,7 +57,7 @@ upgradeAButton.addEventListener("click", () => {
 upgradeBButton.addEventListener("click", () => {
   upgradeLvl = 2;
   upgradenum[1]++;
-  if (count >= 10) {
+  if (count >= 100) {
     AddToCount(-100);
     upgrade();
   }
@@ -63,15 +66,16 @@ upgradeBButton.addEventListener("click", () => {
 upgradeCButton.addEventListener("click", () => {
   upgradeLvl = 3;
   upgradenum[2]++;
-  if (count >= 10) {
+  if (count >= 1000) {
     AddToCount(-1000);
     upgrade();
   }
 });
 
 function upgrade() {
-  rateCounter.textContent = `${ratenum} shakes/sec`;
   requestAnimationFrame(animate);
+  rateCounter.textContent = `${ratenum} shakes/sec`;
+  upgradeCounter.textContent = `A: ${upgradenum[0]}, B: ${upgradenum[1]}, C: ${upgradenum[2]}`;
 }
 
 function animate() {
@@ -80,7 +84,7 @@ function animate() {
     ratenum += 0.1;
   } else if (upgradeLvl == 2) {
     ratenum += 2;
-  } else if (upgradeLvl == 3){
+  } else if (upgradeLvl == 3) {
     ratenum += 50;
   }
   const frame = performance.now();

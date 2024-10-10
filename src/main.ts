@@ -15,9 +15,17 @@ const button = document.createElement("button");
 button.textContent = "🫨"; //shake emoji
 app.append(button);
 
-const upgradeButton = document.createElement("button");
-upgradeButton.textContent = "upgrade";
-app.append(upgradeButton);
+const upgradeAButton = document.createElement("button");
+upgradeAButton.textContent = "upgrade";
+app.append(upgradeAButton);
+
+const upgradeBButton = document.createElement("button");
+upgradeBButton.textContent = "upgrade";
+app.append(upgradeBButton);
+
+const upgradeCButton = document.createElement("button");
+upgradeCButton.textContent = "upgrade";
+app.append(upgradeCButton);
 
 const counter = document.createElement("div");
 counter.textContent = `${count} shakes`;
@@ -27,7 +35,7 @@ button.addEventListener("click", () => {
   AddToCount(1);
 });
 
-upgradeButton.addEventListener("click", () => {
+upgradeAButton.addEventListener("click", () => {
   if (count >= 10) {
     AddToCount(-10);
     upgrade();

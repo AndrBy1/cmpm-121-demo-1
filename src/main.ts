@@ -7,6 +7,7 @@ document.title = gameName;
 
 let count: number = 0;
 let upgradeLvl: number;
+let upgradenum: number[] = [0, 0, 0];
 
 const header = document.createElement("h1");
 header.innerHTML = gameName;
@@ -32,12 +33,17 @@ const counter = document.createElement("div");
 counter.textContent = `${count} shakes`;
 app.append(counter);
 
+const rateCounter = document.createElement("div");
+//rateCounter.textContent = `${ratenum} shakes/sec`;
+app.append(rateCounter);
+
 button.addEventListener("click", () => {
   AddToCount(1);
 });
 
 upgradeAButton.addEventListener("click", () => {
   upgradeLvl = 1;
+  upgradenum[0]++;
   if (count >= 10) {
     AddToCount(-10);
     upgrade();
@@ -46,6 +52,7 @@ upgradeAButton.addEventListener("click", () => {
 
 upgradeBButton.addEventListener("click", () => {
   upgradeLvl = 2;
+  upgradenum[1]++;
   if (count >= 10) {
     AddToCount(-10);
     upgrade();
@@ -54,6 +61,7 @@ upgradeBButton.addEventListener("click", () => {
 
 upgradeCButton.addEventListener("click", () => {
   upgradeLvl = 3;
+  upgradenum[2]++;
   if (count >= 10) {
     AddToCount(-10);
     upgrade();
@@ -70,12 +78,21 @@ function upgrade() {
 }
 
 function animate() {
+  let perSec;
+  if (upgradeLvl == 1) {
+    perSec = 0.1;
+  } else if (upgradeLvl == 2) {
+    perSec = 2;
+  } else {
+    perSec = 50;
+  }
   const frame = performance.now();
   console.log(frame);
   requestAnimationFrame(animate);
   if (Math.floor(frame) % 1000 <= 6) {
-    AddToCount(1);
+    AddToCount(perSec);
   }
+  perSec = 0;
 }
 
 function AddToCount(inc: number) {

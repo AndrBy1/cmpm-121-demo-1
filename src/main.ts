@@ -6,6 +6,7 @@ const gameName = "A game";
 document.title = gameName;
 
 let count: number = 0;
+let upgradeLvl: number;
 
 const header = document.createElement("h1");
 header.innerHTML = gameName;
@@ -36,6 +37,23 @@ button.addEventListener("click", () => {
 });
 
 upgradeAButton.addEventListener("click", () => {
+  upgradeLvl = 1;
+  if (count >= 10) {
+    AddToCount(-10);
+    upgrade();
+  }
+});
+
+upgradeBButton.addEventListener("click", () => {
+  upgradeLvl = 2;
+  if (count >= 10) {
+    AddToCount(-10);
+    upgrade();
+  }
+});
+
+upgradeCButton.addEventListener("click", () => {
+  upgradeLvl = 3;
   if (count >= 10) {
     AddToCount(-10);
     upgrade();

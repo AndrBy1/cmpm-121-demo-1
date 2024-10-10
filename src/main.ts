@@ -10,6 +10,19 @@ let upgradeLvl: number;
 let ratenum = 0;
 const upgradenum: number[] = [0, 0, 0];
 
+interface Item {
+  name: string;
+  cost: number;
+  rate: number;
+}
+
+const availableItems: Item[] = [
+  { name: "Rover", cost: 10, rate: 0.1 },
+  { name: "Mine", cost: 100, rate: 2 },
+  { name: "Colony", cost: 1000, rate: 50 },
+];
+
+
 const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
@@ -19,15 +32,15 @@ button.textContent = "🌝"; //moon emoji
 app.append(button);
 
 const upgradeAButton = document.createElement("button");
-upgradeAButton.textContent = "Purchase Rover";
+upgradeAButton.textContent = `Purchase ${availableItems[0].name}`;
 app.append(upgradeAButton);
 
 const upgradeBButton = document.createElement("button");
-upgradeBButton.textContent = "Purchase Mine";
+upgradeBButton.textContent = `Purchase ${availableItems[1].name}`;
 app.append(upgradeBButton);
 
 const upgradeCButton = document.createElement("button");
-upgradeCButton.textContent = "Purchase Colony";
+upgradeCButton.textContent = `Purchase ${availableItems[2].name}`;
 app.append(upgradeCButton);
 
 const counter = document.createElement("div");
@@ -47,27 +60,27 @@ button.addEventListener("click", () => {
 
 upgradeAButton.addEventListener("click", () => {
   upgradeLvl = 1;
-  if (count >= 10 * (1.15 * upgradenum[0])) {
+  if (count >= availableItems[0].cost * (1.15 * upgradenum[0])) {
     upgradenum[0]++;
-    AddToCount(-10);
+    AddToCount(-availableItems[0].cost);
     upgrade();
   }
 });
 
 upgradeBButton.addEventListener("click", () => {
   upgradeLvl = 2;
-  if (count >= 100 * (1.15 * upgradenum[1])) {
+  if (count >= availableItems[1].cost * (1.15 * upgradenum[1])) {
     upgradenum[1]++;
-    AddToCount(-100);
+    AddToCount(-availableItems[1].cost);
     upgrade();
   }
 });
 
 upgradeCButton.addEventListener("click", () => {
   upgradeLvl = 3;
-  if (count >= 1000 * (1.15 * upgradenum[2])) {
+  if (count >= availableItems[2].cost * (1.15 * upgradenum[2])) {
     upgradenum[2]++;
-    AddToCount(-1000);
+    AddToCount(-availableItems[2].cost);
     upgrade();
   }
 });
@@ -81,11 +94,11 @@ function upgrade() {
 function animate() {
   //console.log("ratenum" + ratenum);
   if (upgradeLvl == 1) {
-    ratenum += 0.1;
+    ratenum += availableItems[0].rate;
   } else if (upgradeLvl == 2) {
-    ratenum += 2;
+    ratenum += availableItems[1].rate;
   } else if (upgradeLvl == 3) {
-    ratenum += 50;
+    ratenum += availableItems[2].rate;
   }
   const frame = performance.now();
   //console.log(frame);
@@ -101,15 +114,5 @@ function AddToCount(inc: number) {
   counter.textContent = `${count} Moon Rocks`;
 }
 
-interface Item {
-  name: string,
-  cost: number,
-  rate: number
-};
 
-const availableItems : Item[] = [
-  {name: "Rover", cost: 10, rate: 0.1},
-  {name: "Mine", cost: 100, rate: 2},
-  {name: "Colony", cost: 1000, rate: 50},
-];
-
+console.log(availableItems);

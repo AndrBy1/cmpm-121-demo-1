@@ -2,7 +2,7 @@ import "./style.css";
 
 const app: HTMLDivElement = document.querySelector("#app")!;
 
-const gameName = "A game";
+const gameName = "Moon Miner";
 document.title = gameName;
 
 let count: number = 0;
@@ -15,27 +15,27 @@ header.innerHTML = gameName;
 app.append(header);
 
 const button = document.createElement("button");
-button.textContent = "🫨"; //shake emoji
+button.textContent = "🌝"; //moon emoji
 app.append(button);
 
 const upgradeAButton = document.createElement("button");
-upgradeAButton.textContent = "upgrade A";
+upgradeAButton.textContent = "Purchase Rover";
 app.append(upgradeAButton);
 
 const upgradeBButton = document.createElement("button");
-upgradeBButton.textContent = "upgrade B";
+upgradeBButton.textContent = "Purchase Mine";
 app.append(upgradeBButton);
 
 const upgradeCButton = document.createElement("button");
-upgradeCButton.textContent = "upgrade C";
+upgradeCButton.textContent = "Purchase Colony";
 app.append(upgradeCButton);
 
 const counter = document.createElement("div");
-counter.textContent = `${count} shakes`;
+counter.textContent = `${count} Moon Rocks`;
 app.append(counter);
 
 const rateCounter = document.createElement("div");
-rateCounter.textContent = `${ratenum} shakes/sec`;
+rateCounter.textContent = `${ratenum} Moon Rocks/sec`;
 app.append(rateCounter);
 
 const upgradeCounter = document.createElement("div");
@@ -52,7 +52,6 @@ upgradeAButton.addEventListener("click", () => {
     AddToCount(-10);
     upgrade();
   }
-  
 });
 
 upgradeBButton.addEventListener("click", () => {
@@ -75,18 +74,18 @@ upgradeCButton.addEventListener("click", () => {
 
 function upgrade() {
   requestAnimationFrame(animate);
-  rateCounter.textContent = `${ratenum} shakes/sec`;
+  rateCounter.textContent = `${ratenum} Moon Rocks/sec`;
   upgradeCounter.textContent = `A: ${upgradenum[0]}, B: ${upgradenum[1]}, C: ${upgradenum[2]}`;
 }
 
 function animate() {
   //console.log("ratenum" + ratenum);
   if (upgradeLvl == 1) {
-    ratenum += 0.1
+    ratenum += 0.1;
   } else if (upgradeLvl == 2) {
-    ratenum += 2
+    ratenum += 2;
   } else if (upgradeLvl == 3) {
-    ratenum += 50
+    ratenum += 50;
   }
   const frame = performance.now();
   //console.log(frame);
@@ -99,7 +98,18 @@ function animate() {
 
 function AddToCount(inc: number) {
   count += inc;
-  counter.textContent = `${count} shakes`;
+  counter.textContent = `${count} Moon Rocks`;
 }
 
-//console.log(autoClick);
+interface Item {
+  name: string,
+  cost: number,
+  rate: number
+};
+
+const availableItems : Item[] = [
+  {name: "Rover", cost: 10, rate: 0.1},
+  {name: "Mine", cost: 100, rate: 2},
+  {name: "Colony", cost: 1000, rate: 50},
+];
+

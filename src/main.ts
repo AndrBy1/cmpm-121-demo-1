@@ -75,7 +75,7 @@ button.addEventListener("click", () => {
 
 upgradeDButton.addEventListener("click", () => {
   app.append(drillDesc);
-  if (count >= 50  * Math.pow(1.15, upgradenum[3])) {
+  if (count >= 50 * Math.pow(1.15, upgradenum[3])) {
     AddToCount(-50 * Math.pow(1.15, upgradenum[3]));
     upgradenum[3]++;
     perClick++;
@@ -96,7 +96,7 @@ upgradeAButton.addEventListener("click", () => {
   //upgradeLvl = 1;
   const calculate = availableItems[0].cost * Math.pow(1.15, upgradenum[0]);
   console.log(calculate - calculate * (0.1 * upgradenum[4]));
-  if (count >= (calculate - calculate * (0.1 * upgradenum[4]))) {
+  if (count >= calculate - calculate * (0.1 * upgradenum[4])) {
     ratenum += availableItems[0].rate;
     upgradenum[0]++;
     AddToCount(-(calculate - calculate * (0.1 * upgradenum[4])));
@@ -108,7 +108,7 @@ upgradeBButton.addEventListener("click", () => {
   //upgradeLvl = 2;
   const calculate = availableItems[1].cost * Math.pow(1.15, upgradenum[1]);
   console.log(calculate - calculate * (0.1 * upgradenum[4]));
-  if (count >= (calculate - calculate * (0.1 * upgradenum[4]))) {
+  if (count >= calculate - calculate * (0.1 * upgradenum[4])) {
     ratenum += availableItems[1].rate;
     upgradenum[1]++;
     AddToCount(-(calculate - calculate * (0.1 * upgradenum[4])));
@@ -120,7 +120,7 @@ upgradeCButton.addEventListener("click", () => {
   //upgradeLvl = 3;
   const calculate = availableItems[2].cost * Math.pow(1.15, upgradenum[2]);
   console.log(calculate - calculate * (0.1 * upgradenum[4]));
-  if (count >= (calculate - calculate * (0.1 * upgradenum[4]))) {
+  if (count >= calculate - calculate * (0.1 * upgradenum[4])) {
     ratenum += availableItems[2].rate;
     upgradenum[2]++;
     AddToCount(-(calculate - calculate * (0.1 * upgradenum[4])));

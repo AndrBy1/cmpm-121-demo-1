@@ -127,7 +127,6 @@ upgradeCButton.addEventListener("click", () => {
 });
 
 function upgrade() {
-  
   rateCounter.textContent = `${ratenum} Moon Rocks/sec`;
   upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, driller: ${upgradenum[3]}, negotiator: ${upgradenum[4]}`;
 }
@@ -135,11 +134,11 @@ function upgrade() {
 let lastTime = performance.now();
 
 function animate(currentTime: number) {
-  const dTime = (currentTime - lastTime)/ 1000;
-  lastTime = currentTime
-  
+  const dTime = (currentTime - lastTime) / 1000;
+  lastTime = currentTime;
+
   AddToCount(dTime * ratenum);
-  
+
   requestAnimationFrame(animate);
 }
 

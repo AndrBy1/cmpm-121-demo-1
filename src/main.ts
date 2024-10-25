@@ -6,10 +6,8 @@ const gameName = "Moon Miner";
 document.title = gameName;
 
 let count: number = 0;
-//let upgradeLvl: number;
 let ratenum = 0;
 let perClick = 1;
-//let frameNum = 0;
 const upgradenum: number[] = [0, 0, 0, 0, 0];
 
 interface Item {
@@ -129,21 +127,20 @@ upgradeCButton.addEventListener("click", () => {
 });
 
 function upgrade() {
-  requestAnimationFrame(animate);
+  
   rateCounter.textContent = `${ratenum} Moon Rocks/sec`;
   upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, driller: ${upgradenum[3]}, negotiator: ${upgradenum[4]}`;
 }
 
-function animate() {
-  //console.log("ratenum" + ratenum);
+let lastTime = performance.now();
 
-  const frame = performance.now();
-  //console.log(frame);
+function animate(currentTime: number) {
+  const dTime = (currentTime - lastTime)/ 1000;
+  lastTime = currentTime
+  
+  AddToCount(dTime * ratenum);
+  
   requestAnimationFrame(animate);
-  if (Math.floor(frame) % 1000 <= 6) {
-    AddToCount(ratenum);
-  }
-  //upgradeLvl = 0;
 }
 
 function AddToCount(inc: number) {
@@ -152,3 +149,5 @@ function AddToCount(inc: number) {
 }
 
 console.log(availableItems);
+
+requestAnimationFrame(animate);

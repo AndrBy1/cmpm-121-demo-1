@@ -27,7 +27,7 @@ header.innerHTML = gameName;
 app.append(header);
 
 const button = document.createElement("button");
-button.textContent = "🌝"; //moon emoji
+button.textContent = "🌝"; //smily moon emoji
 app.append(button);
 
 const upgradeAButton = document.createElement("button");

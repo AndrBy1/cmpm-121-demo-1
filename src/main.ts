@@ -78,17 +78,14 @@ function upgradeButtonFunc(type: number, button: HTMLButtonElement) {
 }
 
 upgradeAButton.addEventListener("click", () => {
-  //upgradeLvl = 1;
   upgradeButtonFunc(0, upgradeAButton);
 });
 
 upgradeBButton.addEventListener("click", () => {
-  //upgradeLvl = 2;
   upgradeButtonFunc(1, upgradeBButton);
 });
 
 upgradeCButton.addEventListener("click", () => {
-  //upgradeLvl = 3;
   upgradeButtonFunc(2, upgradeCButton);
 });
 

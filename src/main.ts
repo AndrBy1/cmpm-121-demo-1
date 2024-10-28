@@ -28,46 +28,38 @@ const availableItems: Item[] = [
 const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
-
 const button = document.createElement("button");
+const upgradeAButton = document.createElement("button");
+const upgradeBButton = document.createElement("button");
+const upgradeCButton = document.createElement("button");
+const upgradeDButton = document.createElement("button");
+const upgradeEButton = document.createElement("button");
+const counter = document.createElement("div");
+const rateCounter = document.createElement("div");
+const drillDesc = document.createElement("div");
+const negotiDesc = document.createElement("div");
+const upgradeCounter = document.createElement("div");
+
 button.textContent = "🌝"; //smily moon emoji
 app.append(button);
-
-const upgradeAButton = document.createElement("button");
 upgradeAButton.textContent = `Purchase ${availableItems[0].name} (${availableItems[0].cost} rocks)`;
 app.append(upgradeAButton);
-
-const upgradeBButton = document.createElement("button");
 upgradeBButton.textContent = `Purchase ${availableItems[1].name} (${availableItems[1].cost} rocks)`;
 app.append(upgradeBButton);
-
-const upgradeCButton = document.createElement("button");
 upgradeCButton.textContent = `Purchase ${availableItems[2].name} (${availableItems[2].cost} rocks)`;
 app.append(upgradeCButton);
-
-const upgradeDButton = document.createElement("button");
 upgradeDButton.textContent = `Purchase ${availableItems[3].name} (50 rocks)`;
 app.append(upgradeDButton);
-
-const upgradeEButton = document.createElement("button");
 upgradeEButton.textContent = `Purchase ${availableItems[4].name} (150 rocks)`;
 app.append(upgradeEButton);
-
-const counter = document.createElement("div");
 counter.textContent = `${count} Moon Rocks`;
 app.append(counter);
-
-const rateCounter = document.createElement("div");
 rateCounter.textContent = `${ratenum} Moon Rocks/sec`;
 app.append(rateCounter);
 
-const drillDesc = document.createElement("div");
 drillDesc.textContent = `drills increases rocks per click by 1`;
-
-const negotiDesc = document.createElement("div");
 negotiDesc.textContent = `negotiator decreases price of everything by 10%, max negotiator is 6`;
 
-const upgradeCounter = document.createElement("div");
 app.append(upgradeCounter);
 
 button.addEventListener("click", () => {

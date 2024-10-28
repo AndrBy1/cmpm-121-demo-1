@@ -36,9 +36,6 @@ const upgradeDButton = document.createElement("button");
 const upgradeEButton = document.createElement("button");
 const counter = document.createElement("div");
 const rateCounter = document.createElement("div");
-const drillDesc = document.createElement("div");
-const negotiDesc = document.createElement("div");
-const upgradeCounter = document.createElement("div");
 
 button.textContent = "🌝"; //smily moon emoji
 app.append(button);
@@ -57,35 +54,8 @@ app.append(counter);
 rateCounter.textContent = `${ratenum} Moon Rocks/sec`;
 app.append(rateCounter);
 
-drillDesc.textContent = `drills increases rocks per click by 1`;
-negotiDesc.textContent = `negotiator decreases price of everything by 10%, max negotiator is 6`;
-
-app.append(upgradeCounter);
-
 button.addEventListener("click", () => {
   AddToCount(perClick);
-});
-
-upgradeDButton.addEventListener("click", () => {
-  app.append(drillDesc);
-  if (count >= 50 * Math.pow(costGrowthRate, upgradenum[3])) {
-    AddToCount(-50 * Math.pow(costGrowthRate, upgradenum[3]));
-    upgradenum[3]++;
-    perClick++;
-    upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, ${availableItems[3].name}: ${upgradenum[3]}, ${availableItems[4].name}: ${upgradenum[4]}`;
-  }
-});
-
-upgradeEButton.addEventListener("click", () => {
-  app.append(negotiDesc);
-  if (
-    count >= 150 * Math.pow(costGrowthRate, upgradenum[4]) &&
-    upgradenum[4] <= 6
-  ) {
-    AddToCount(-150 * Math.pow(costGrowthRate, upgradenum[4]));
-    upgradenum[4]++;
-    upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, ${availableItems[3].name}: ${upgradenum[3]}, ${availableItems[4].name}: ${upgradenum[4]}`;
-  }
 });
 
 upgradeAButton.addEventListener("click", () => {
@@ -129,6 +99,39 @@ upgradeCButton.addEventListener("click", () => {
     upgrade();
   }
 });
+
+upgradeDButton.addEventListener("click", () => {
+  app.append(drillDesc);
+  if (count >= 50 * Math.pow(costGrowthRate, upgradenum[3])) {
+    AddToCount(-50 * Math.pow(costGrowthRate, upgradenum[3]));
+    upgradenum[3]++;
+    perClick++;
+    upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, ${availableItems[3].name}: ${upgradenum[3]}, ${availableItems[4].name}: ${upgradenum[4]}`;
+  }
+});
+
+upgradeEButton.addEventListener("click", () => {
+  app.append(negotiDesc);
+  if (
+    count >= 150 * Math.pow(costGrowthRate, upgradenum[4]) &&
+    upgradenum[4] <= 6
+  ) {
+    AddToCount(-150 * Math.pow(costGrowthRate, upgradenum[4]));
+    upgradenum[4]++;
+    upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, ${availableItems[3].name}: ${upgradenum[3]}, ${availableItems[4].name}: ${upgradenum[4]}`;
+  }
+});
+
+const drillDesc = document.createElement("div");
+const negotiDesc = document.createElement("div");
+const upgradeCounter = document.createElement("div");
+
+drillDesc.textContent = `drills increases rocks per click by 1`;
+negotiDesc.textContent = `negotiator decreases price of everything by 10%, max negotiator is 6`;
+app.append(upgradeCounter);
+
+
+
 
 function upgrade() {
   rateCounter.textContent = `${ratenum} Moon Rocks/sec`;

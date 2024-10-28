@@ -128,7 +128,6 @@ upgradeEButton.addEventListener("click", () => {
   }
 });
 
-
 function upgrade() {
   rateCounter.textContent = `${ratenum} Moon Rocks/sec`;
   upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, driller: ${upgradenum[3]}, negotiator: ${upgradenum[4]}`;

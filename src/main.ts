@@ -8,6 +8,7 @@ document.title = gameName;
 let count: number = 0;
 let ratenum = 0;
 let perClick = 1;
+const costGrowthRate = 1.15
 const upgradenum: number[] = [0, 0, 0, 0, 0];
 
 interface Item {
@@ -73,8 +74,8 @@ button.addEventListener("click", () => {
 
 upgradeDButton.addEventListener("click", () => {
   app.append(drillDesc);
-  if (count >= 50 * Math.pow(1.15, upgradenum[3])) {
-    AddToCount(-50 * Math.pow(1.15, upgradenum[3]));
+  if (count >= 50 * Math.pow(costGrowthRate, upgradenum[3])) {
+    AddToCount(-50 * Math.pow(costGrowthRate, upgradenum[3]));
     upgradenum[3]++;
     perClick++;
     upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, driller: ${upgradenum[3]}, negotiator: ${upgradenum[4]}`;
@@ -83,8 +84,8 @@ upgradeDButton.addEventListener("click", () => {
 
 upgradeEButton.addEventListener("click", () => {
   app.append(negotiDesc);
-  if (count >= 150 * Math.pow(1.15, upgradenum[4]) && upgradenum[4] <= 6) {
-    AddToCount(-150 * Math.pow(1.15, upgradenum[4]));
+  if (count >= 150 * Math.pow(costGrowthRate, upgradenum[4]) && upgradenum[4] <= 6) {
+    AddToCount(-150 * Math.pow(costGrowthRate, upgradenum[4]));
     upgradenum[4]++;
     upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, driller: ${upgradenum[3]}, negotiator: ${upgradenum[4]}`;
   }
@@ -92,7 +93,7 @@ upgradeEButton.addEventListener("click", () => {
 
 upgradeAButton.addEventListener("click", () => {
   //upgradeLvl = 1;
-  const calculate = availableItems[0].cost * Math.pow(1.15, upgradenum[0]);
+  const calculate = availableItems[0].cost * Math.pow(costGrowthRate, upgradenum[0]);
   console.log(calculate - calculate * (0.1 * upgradenum[4]));
   if (count >= calculate - calculate * (0.1 * upgradenum[4])) {
     ratenum += availableItems[0].rate;
@@ -104,7 +105,7 @@ upgradeAButton.addEventListener("click", () => {
 
 upgradeBButton.addEventListener("click", () => {
   //upgradeLvl = 2;
-  const calculate = availableItems[1].cost * Math.pow(1.15, upgradenum[1]);
+  const calculate = availableItems[1].cost * Math.pow(costGrowthRate, upgradenum[1]);
   console.log(calculate - calculate * (0.1 * upgradenum[4]));
   if (count >= calculate - calculate * (0.1 * upgradenum[4])) {
     ratenum += availableItems[1].rate;
@@ -116,7 +117,7 @@ upgradeBButton.addEventListener("click", () => {
 
 upgradeCButton.addEventListener("click", () => {
   //upgradeLvl = 3;
-  const calculate = availableItems[2].cost * Math.pow(1.15, upgradenum[2]);
+  const calculate = availableItems[2].cost * Math.pow(costGrowthRate, upgradenum[2]);
   console.log(calculate - calculate * (0.1 * upgradenum[4]));
   if (count >= calculate - calculate * (0.1 * upgradenum[4])) {
     ratenum += availableItems[2].rate;

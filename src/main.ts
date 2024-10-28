@@ -9,7 +9,7 @@ let RockCount: number = 0;
 let RockPerSecRate = 0;
 let RocksPerClick = 1;
 const costGrowthRate = 1.15;
-const NumOfUpgrades: number[] = [0, 0, 0, 0, 0];
+const NumOfUpgrades: number[] = [0, 0, 0, 0, 0]; //[0] is rover, [1] is Mine, [2] is Colony, [4] is Driller, [5] is Negotiator
 
 interface Item {
   name: string;
@@ -64,46 +64,31 @@ ClickButton.addEventListener("click", () => {
   AddToCount(RocksPerClick);
 });
 
-upgradeAButton.addEventListener("click", () => {
-  //upgradeLvl = 1;
-  const calculate =
-    availableItems[0].cost * Math.pow(costGrowthRate, NumOfUpgrades[0]);
-  console.log(calculate - calculate * (0.1 * NumOfUpgrades[4]));
-  if (RockCount >= calculate - calculate * (0.1 * NumOfUpgrades[4])) {
-    RockPerSecRate += availableItems[0].rate;
-    NumOfUpgrades[0]++;
-    AddToCount(-(calculate - calculate * (0.1 * NumOfUpgrades[4])));
-    upgradeAButton.textContent = `Purchase ${availableItems[0].name} (${calculate - calculate * (0.1 * NumOfUpgrades[4])} rocks)`;
+function upgradeButtonFunc(type: number, button: HTMLButtonElement){
+  const calculate = availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type]);
+  console.log(calculate);
+  if (RockCount >= calculate) {
+    RockPerSecRate += availableItems[type].rate;
+    NumOfUpgrades[type]++;
+    AddToCount(-(calculate));
+    button.textContent = `Purchase ${availableItems[type].name} (${availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type])} rocks)`;
     upgrade();
   }
+}
+
+upgradeAButton.addEventListener("click", () => {
+  //upgradeLvl = 1;
+  upgradeButtonFunc(0, upgradeAButton);
 });
 
 upgradeBButton.addEventListener("click", () => {
   //upgradeLvl = 2;
-  const calculate =
-    availableItems[1].cost * Math.pow(costGrowthRate, NumOfUpgrades[1]);
-  console.log(calculate - calculate * (0.1 * NumOfUpgrades[4]));
-  if (RockCount >= calculate - calculate * (0.1 * NumOfUpgrades[4])) {
-    RockPerSecRate += availableItems[1].rate;
-    NumOfUpgrades[1]++;
-    AddToCount(-(calculate - calculate * (0.1 * NumOfUpgrades[4])));
-    upgradeBButton.textContent = `Purchase ${availableItems[1].name} (${calculate - calculate * (0.1 * NumOfUpgrades[4])} rocks)`;
-    upgrade();
-  }
+  upgradeButtonFunc(1, upgradeBButton);
 });
 
 upgradeCButton.addEventListener("click", () => {
   //upgradeLvl = 3;
-  const calculate =
-    availableItems[2].cost * Math.pow(costGrowthRate, NumOfUpgrades[2]);
-  console.log(calculate - calculate * (0.1 * NumOfUpgrades[4]));
-  if (RockCount >= calculate - calculate * (0.1 * NumOfUpgrades[4])) {
-    RockPerSecRate += availableItems[2].rate;
-    NumOfUpgrades[2]++;
-    AddToCount(-(calculate - calculate * (0.1 * NumOfUpgrades[4])));
-    upgradeCButton.textContent = `Purchase ${availableItems[2].name} (${calculate - calculate * (0.1 * NumOfUpgrades[4])} rocks)`;
-    upgrade();
-  }
+  upgradeButtonFunc(2, upgradeCButton);
 });
 
 upgradeDButton.addEventListener("click", () => {

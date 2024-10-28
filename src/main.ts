@@ -25,6 +25,12 @@ const availableItems: Item[] = [
   { name: "Negotiator", cost: 150, rate: 0 },
 ];
 
+const drillDesc = document.createElement("div");
+const negotiDesc = document.createElement("div");
+const upgradeCounter = document.createElement("div");
+drillDesc.textContent = `drills increases rocks per click by 1`;
+negotiDesc.textContent = `negotiator decreases price of everything by 10%, max negotiator is 6`;
+app.append(upgradeCounter);
 const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
@@ -121,16 +127,6 @@ upgradeEButton.addEventListener("click", () => {
     upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, ${availableItems[3].name}: ${upgradenum[3]}, ${availableItems[4].name}: ${upgradenum[4]}`;
   }
 });
-
-const drillDesc = document.createElement("div");
-const negotiDesc = document.createElement("div");
-const upgradeCounter = document.createElement("div");
-
-drillDesc.textContent = `drills increases rocks per click by 1`;
-negotiDesc.textContent = `negotiator decreases price of everything by 10%, max negotiator is 6`;
-app.append(upgradeCounter);
-
-
 
 
 function upgrade() {

@@ -5,11 +5,11 @@ const app: HTMLDivElement = document.querySelector("#app")!;
 const gameName = "Moon Miner";
 document.title = gameName;
 
-let count: number = 0;
-let ratenum = 0;
-let perClick = 1;
+let RockCount: number = 0;
+let RockPerSecRate = 0;
+let RocksPerClick = 1;
 const costGrowthRate = 1.15;
-const upgradenum: number[] = [0, 0, 0, 0, 0];
+const NumOfUpgrades: number[] = [0, 0, 0, 0, 0];
 
 interface Item {
   name: string;
@@ -31,10 +31,10 @@ const upgradeCounter = document.createElement("div");
 drillDesc.textContent = `drills increases rocks per click by 1`;
 negotiDesc.textContent = `negotiator decreases price of everything by 10%, max negotiator is 6`;
 app.append(upgradeCounter);
-const header = document.createElement("h1");
-header.innerHTML = gameName;
-app.append(header);
-const button = document.createElement("button");
+const DisplayName = document.createElement("h1");
+DisplayName.innerHTML = gameName;
+app.append(DisplayName);
+const ClickButton = document.createElement("button");
 const upgradeAButton = document.createElement("button");
 const upgradeBButton = document.createElement("button");
 const upgradeCButton = document.createElement("button");
@@ -43,8 +43,8 @@ const upgradeEButton = document.createElement("button");
 const counter = document.createElement("div");
 const rateCounter = document.createElement("div");
 
-button.textContent = "🌝"; //smily moon emoji
-app.append(button);
+ClickButton.textContent = "🌝"; //smily moon emoji
+app.append(ClickButton);
 upgradeAButton.textContent = `Purchase ${availableItems[0].name} (${availableItems[0].cost} rocks)`;
 app.append(upgradeAButton);
 upgradeBButton.textContent = `Purchase ${availableItems[1].name} (${availableItems[1].cost} rocks)`;
@@ -55,25 +55,25 @@ upgradeDButton.textContent = `Purchase ${availableItems[3].name} (50 rocks)`;
 app.append(upgradeDButton);
 upgradeEButton.textContent = `Purchase ${availableItems[4].name} (150 rocks)`;
 app.append(upgradeEButton);
-counter.textContent = `${count} Moon Rocks`;
+counter.textContent = `${RockCount} Moon Rocks`;
 app.append(counter);
-rateCounter.textContent = `${ratenum} Moon Rocks/sec`;
+rateCounter.textContent = `${RockPerSecRate} Moon Rocks/sec`;
 app.append(rateCounter);
 
-button.addEventListener("click", () => {
-  AddToCount(perClick);
+ClickButton.addEventListener("click", () => {
+  AddToCount(RocksPerClick);
 });
 
 upgradeAButton.addEventListener("click", () => {
   //upgradeLvl = 1;
   const calculate =
-    availableItems[0].cost * Math.pow(costGrowthRate, upgradenum[0]);
-  console.log(calculate - calculate * (0.1 * upgradenum[4]));
-  if (count >= calculate - calculate * (0.1 * upgradenum[4])) {
-    ratenum += availableItems[0].rate;
-    upgradenum[0]++;
-    AddToCount(-(calculate - calculate * (0.1 * upgradenum[4])));
-    upgradeAButton.textContent = `Purchase ${availableItems[0].name} (${calculate - calculate * (0.1 * upgradenum[4])} rocks)`;
+    availableItems[0].cost * Math.pow(costGrowthRate, NumOfUpgrades[0]);
+  console.log(calculate - calculate * (0.1 * NumOfUpgrades[4]));
+  if (RockCount >= calculate - calculate * (0.1 * NumOfUpgrades[4])) {
+    RockPerSecRate += availableItems[0].rate;
+    NumOfUpgrades[0]++;
+    AddToCount(-(calculate - calculate * (0.1 * NumOfUpgrades[4])));
+    upgradeAButton.textContent = `Purchase ${availableItems[0].name} (${calculate - calculate * (0.1 * NumOfUpgrades[4])} rocks)`;
     upgrade();
   }
 });
@@ -81,13 +81,13 @@ upgradeAButton.addEventListener("click", () => {
 upgradeBButton.addEventListener("click", () => {
   //upgradeLvl = 2;
   const calculate =
-    availableItems[1].cost * Math.pow(costGrowthRate, upgradenum[1]);
-  console.log(calculate - calculate * (0.1 * upgradenum[4]));
-  if (count >= calculate - calculate * (0.1 * upgradenum[4])) {
-    ratenum += availableItems[1].rate;
-    upgradenum[1]++;
-    AddToCount(-(calculate - calculate * (0.1 * upgradenum[4])));
-    upgradeBButton.textContent = `Purchase ${availableItems[1].name} (${calculate - calculate * (0.1 * upgradenum[4])} rocks)`;
+    availableItems[1].cost * Math.pow(costGrowthRate, NumOfUpgrades[1]);
+  console.log(calculate - calculate * (0.1 * NumOfUpgrades[4]));
+  if (RockCount >= calculate - calculate * (0.1 * NumOfUpgrades[4])) {
+    RockPerSecRate += availableItems[1].rate;
+    NumOfUpgrades[1]++;
+    AddToCount(-(calculate - calculate * (0.1 * NumOfUpgrades[4])));
+    upgradeBButton.textContent = `Purchase ${availableItems[1].name} (${calculate - calculate * (0.1 * NumOfUpgrades[4])} rocks)`;
     upgrade();
   }
 });
@@ -95,42 +95,42 @@ upgradeBButton.addEventListener("click", () => {
 upgradeCButton.addEventListener("click", () => {
   //upgradeLvl = 3;
   const calculate =
-    availableItems[2].cost * Math.pow(costGrowthRate, upgradenum[2]);
-  console.log(calculate - calculate * (0.1 * upgradenum[4]));
-  if (count >= calculate - calculate * (0.1 * upgradenum[4])) {
-    ratenum += availableItems[2].rate;
-    upgradenum[2]++;
-    AddToCount(-(calculate - calculate * (0.1 * upgradenum[4])));
-    upgradeCButton.textContent = `Purchase ${availableItems[2].name} (${calculate - calculate * (0.1 * upgradenum[4])} rocks)`;
+    availableItems[2].cost * Math.pow(costGrowthRate, NumOfUpgrades[2]);
+  console.log(calculate - calculate * (0.1 * NumOfUpgrades[4]));
+  if (RockCount >= calculate - calculate * (0.1 * NumOfUpgrades[4])) {
+    RockPerSecRate += availableItems[2].rate;
+    NumOfUpgrades[2]++;
+    AddToCount(-(calculate - calculate * (0.1 * NumOfUpgrades[4])));
+    upgradeCButton.textContent = `Purchase ${availableItems[2].name} (${calculate - calculate * (0.1 * NumOfUpgrades[4])} rocks)`;
     upgrade();
   }
 });
 
 upgradeDButton.addEventListener("click", () => {
   app.append(drillDesc);
-  if (count >= 50 * Math.pow(costGrowthRate, upgradenum[3])) {
-    AddToCount(-50 * Math.pow(costGrowthRate, upgradenum[3]));
-    upgradenum[3]++;
-    perClick++;
-    upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, ${availableItems[3].name}: ${upgradenum[3]}, ${availableItems[4].name}: ${upgradenum[4]}`;
+  if (RockCount >= 50 * Math.pow(costGrowthRate, NumOfUpgrades[3])) {
+    AddToCount(-50 * Math.pow(costGrowthRate, NumOfUpgrades[3]));
+    NumOfUpgrades[3]++;
+    RocksPerClick++;
+    upgradeCounter.textContent = `${availableItems[0].name}: ${NumOfUpgrades[0]}, ${availableItems[1].name}: ${NumOfUpgrades[1]}, ${availableItems[2].name}: ${NumOfUpgrades[2]}, ${availableItems[3].name}: ${NumOfUpgrades[3]}, ${availableItems[4].name}: ${NumOfUpgrades[4]}`;
   }
 });
 
 upgradeEButton.addEventListener("click", () => {
   app.append(negotiDesc);
   if (
-    count >= 150 * Math.pow(costGrowthRate, upgradenum[4]) &&
-    upgradenum[4] <= 6
+    RockCount >= 150 * Math.pow(costGrowthRate, NumOfUpgrades[4]) &&
+    NumOfUpgrades[4] <= 6
   ) {
-    AddToCount(-150 * Math.pow(costGrowthRate, upgradenum[4]));
-    upgradenum[4]++;
-    upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, ${availableItems[3].name}: ${upgradenum[3]}, ${availableItems[4].name}: ${upgradenum[4]}`;
+    AddToCount(-150 * Math.pow(costGrowthRate, NumOfUpgrades[4]));
+    NumOfUpgrades[4]++;
+    upgradeCounter.textContent = `${availableItems[0].name}: ${NumOfUpgrades[0]}, ${availableItems[1].name}: ${NumOfUpgrades[1]}, ${availableItems[2].name}: ${NumOfUpgrades[2]}, ${availableItems[3].name}: ${NumOfUpgrades[3]}, ${availableItems[4].name}: ${NumOfUpgrades[4]}`;
   }
 });
 
 function upgrade() {
-  rateCounter.textContent = `${ratenum} Moon Rocks/sec`;
-  upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, driller: ${upgradenum[3]}, negotiator: ${upgradenum[4]}`;
+  rateCounter.textContent = `${RockPerSecRate} Moon Rocks/sec`;
+  upgradeCounter.textContent = `${availableItems[0].name}: ${NumOfUpgrades[0]}, ${availableItems[1].name}: ${NumOfUpgrades[1]}, ${availableItems[2].name}: ${NumOfUpgrades[2]}, driller: ${NumOfUpgrades[3]}, negotiator: ${NumOfUpgrades[4]}`;
 }
 
 let lastTime = performance.now();
@@ -139,14 +139,14 @@ function animate(currentTime: number) {
   const dTime = (currentTime - lastTime) / 1000;
   lastTime = currentTime;
 
-  AddToCount(dTime * ratenum);
+  AddToCount(dTime * RockPerSecRate);
 
   requestAnimationFrame(animate);
 }
 
 function AddToCount(inc: number) {
-  count += inc;
-  counter.textContent = `${count} Moon Rocks`;
+  RockCount += inc;
+  counter.textContent = `${RockCount} Moon Rocks`;
 }
 
 console.log(availableItems);

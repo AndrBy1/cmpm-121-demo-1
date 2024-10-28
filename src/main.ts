@@ -64,13 +64,14 @@ ClickButton.addEventListener("click", () => {
   AddToCount(RocksPerClick);
 });
 
-function upgradeButtonFunc(type: number, button: HTMLButtonElement){
-  const calculate = availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type]);
+function upgradeButtonFunc(type: number, button: HTMLButtonElement) {
+  const calculate =
+    availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type]);
   console.log(calculate);
   if (RockCount >= calculate) {
     RockPerSecRate += availableItems[type].rate;
     NumOfUpgrades[type]++;
-    AddToCount(-(calculate));
+    AddToCount(-calculate);
     button.textContent = `Purchase ${availableItems[type].name} (${availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type])} rocks)`;
     upgrade();
   }

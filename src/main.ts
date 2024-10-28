@@ -89,9 +89,8 @@ upgradeCButton.addEventListener("click", () => {
   upgradeButtonFunc(2, upgradeCButton);
 });
 
-function updateUpgradeCounterTxt(){
-  upgradeCounter.textContent = 
-    `${availableItems[0].name}: ${NumOfUpgrades[0]}, ${availableItems[1].name}: ${NumOfUpgrades[1]}, ${availableItems[2].name}: ${NumOfUpgrades[2]}, ${availableItems[3].name}: ${NumOfUpgrades[3]}, ${availableItems[4].name}: ${NumOfUpgrades[4]}`;
+function updateUpgradeCounterTxt() {
+  upgradeCounter.textContent = `${availableItems[0].name}: ${NumOfUpgrades[0]}, ${availableItems[1].name}: ${NumOfUpgrades[1]}, ${availableItems[2].name}: ${NumOfUpgrades[2]}, ${availableItems[3].name}: ${NumOfUpgrades[3]}, ${availableItems[4].name}: ${NumOfUpgrades[4]}`;
 }
 
 upgradeDButton.addEventListener("click", () => {

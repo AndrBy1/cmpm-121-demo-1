@@ -21,8 +21,8 @@ const availableItems: Item[] = [
   { name: "Rover", cost: 10, rate: 0.1 },
   { name: "Mine", cost: 100, rate: 2 },
   { name: "Colony", cost: 1000, rate: 50 },
-  { name: "Driller", cost: 50, rate: 0},
-  { name: "Negotiator", cost: 150, rate: 0}
+  { name: "Driller", cost: 50, rate: 0 },
+  { name: "Negotiator", cost: 150, rate: 0 },
 ];
 
 const header = document.createElement("h1");
@@ -86,7 +86,10 @@ upgradeDButton.addEventListener("click", () => {
 
 upgradeEButton.addEventListener("click", () => {
   app.append(negotiDesc);
-  if (count >= 150 * Math.pow(costGrowthRate, upgradenum[4]) && upgradenum[4] <= 6) {
+  if (
+    count >= 150 * Math.pow(costGrowthRate, upgradenum[4]) &&
+    upgradenum[4] <= 6
+  ) {
     AddToCount(-150 * Math.pow(costGrowthRate, upgradenum[4]));
     upgradenum[4]++;
     upgradeCounter.textContent = `${availableItems[0].name}: ${upgradenum[0]}, ${availableItems[1].name}: ${upgradenum[1]}, ${availableItems[2].name}: ${upgradenum[2]}, ${availableItems[3].name}: ${upgradenum[3]}, ${availableItems[4].name}: ${upgradenum[4]}`;

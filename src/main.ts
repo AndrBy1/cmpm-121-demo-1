@@ -64,18 +64,6 @@ ClickButton.addEventListener("click", () => {
   AddToCount(RocksPerClick);
 });
 
-function upgradeButtonFunc(type: number, button: HTMLButtonElement) {
-  const calculate =
-    availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type]);
-  console.log(calculate);
-  if (RockCount >= calculate) {
-    RockPerSecRate += availableItems[type].rate;
-    NumOfUpgrades[type]++;
-    AddToCount(-calculate);
-    button.textContent = `Purchase ${availableItems[type].name} (${availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type])} rocks)`;
-    upgrade();
-  }
-}
 
 upgradeAButton.addEventListener("click", () => {
   upgradeButtonFunc(0, upgradeAButton);
@@ -88,10 +76,6 @@ upgradeBButton.addEventListener("click", () => {
 upgradeCButton.addEventListener("click", () => {
   upgradeButtonFunc(2, upgradeCButton);
 });
-
-function updateUpgradeCounterTxt() {
-  upgradeCounter.textContent = `${availableItems[0].name}: ${NumOfUpgrades[0]}, ${availableItems[1].name}: ${NumOfUpgrades[1]}, ${availableItems[2].name}: ${NumOfUpgrades[2]}, ${availableItems[3].name}: ${NumOfUpgrades[3]}, ${availableItems[4].name}: ${NumOfUpgrades[4]}`;
-}
 
 upgradeDButton.addEventListener("click", () => {
   app.append(drillDesc);
@@ -114,6 +98,23 @@ upgradeEButton.addEventListener("click", () => {
     updateUpgradeCounterTxt();
   }
 });
+
+function updateUpgradeCounterTxt() {
+  upgradeCounter.textContent = `${availableItems[0].name}: ${NumOfUpgrades[0]}, ${availableItems[1].name}: ${NumOfUpgrades[1]}, ${availableItems[2].name}: ${NumOfUpgrades[2]}, ${availableItems[3].name}: ${NumOfUpgrades[3]}, ${availableItems[4].name}: ${NumOfUpgrades[4]}`;
+}
+
+function upgradeButtonFunc(type: number, button: HTMLButtonElement) {
+  const calculate =
+    availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type]);
+  console.log(calculate);
+  if (RockCount >= calculate) {
+    RockPerSecRate += availableItems[type].rate;
+    NumOfUpgrades[type]++;
+    AddToCount(-calculate);
+    button.textContent = `Purchase ${availableItems[type].name} (${availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type])} rocks)`;
+    upgrade();
+  }
+}
 
 function upgrade() {
   rateCounter.textContent = `${RockPerSecRate} Moon Rocks/sec`;

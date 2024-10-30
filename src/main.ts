@@ -44,16 +44,18 @@ const counter = document.createElement("div");
 const rateCounter = document.createElement("div");
 
 ClickButton.textContent = "🌝"; //smily moon emoji
+ClickButton.style.fontSize = "40px";
 app.append(ClickButton);
+app.append("\n");
 upgradeAButton.textContent = `Purchase ${availableItems[0].name} (${availableItems[0].cost} rocks)`;
 app.append(upgradeAButton);
 upgradeBButton.textContent = `Purchase ${availableItems[1].name} (${availableItems[1].cost} rocks)`;
 app.append(upgradeBButton);
 upgradeCButton.textContent = `Purchase ${availableItems[2].name} (${availableItems[2].cost} rocks)`;
 app.append(upgradeCButton);
-upgradeDButton.textContent = `Purchase ${availableItems[3].name} (50 rocks)`;
+upgradeDButton.textContent = `Purchase ${availableItems[3].name} (50 rocks),\n drills increases rocks per click by 1`;
 app.append(upgradeDButton);
-upgradeEButton.textContent = `Purchase ${availableItems[4].name} (150 rocks)`;
+upgradeEButton.textContent = `Purchase ${availableItems[4].name} (150 rocks),\n negotiator decreases price of everything by 10%, max negotiator is 6`;
 app.append(upgradeEButton);
 counter.textContent = `${RockCount} Moon Rocks`;
 app.append(counter);
@@ -77,7 +79,7 @@ upgradeCButton.addEventListener("click", () => {
 });
 
 upgradeDButton.addEventListener("click", () => {
-  app.append(drillDesc);
+  
   if (RockCount >= 50 * Math.pow(costGrowthRate, NumOfUpgrades[3])) {
     AddToCount(-50 * Math.pow(costGrowthRate, NumOfUpgrades[3]));
     NumOfUpgrades[3]++;
@@ -87,7 +89,7 @@ upgradeDButton.addEventListener("click", () => {
 });
 
 upgradeEButton.addEventListener("click", () => {
-  app.append(negotiDesc);
+  
   if (
     RockCount >= 150 * Math.pow(costGrowthRate, NumOfUpgrades[4]) &&
     NumOfUpgrades[4] <= 6

@@ -79,7 +79,6 @@ upgradeCButton.addEventListener("click", () => {
 });
 
 upgradeDButton.addEventListener("click", () => {
-  
   if (RockCount >= 50 * Math.pow(costGrowthRate, NumOfUpgrades[3])) {
     AddToCount(-50 * Math.pow(costGrowthRate, NumOfUpgrades[3]));
     NumOfUpgrades[3]++;
@@ -89,7 +88,6 @@ upgradeDButton.addEventListener("click", () => {
 });
 
 upgradeEButton.addEventListener("click", () => {
-  
   if (
     RockCount >= 150 * Math.pow(costGrowthRate, NumOfUpgrades[4]) &&
     NumOfUpgrades[4] <= 6

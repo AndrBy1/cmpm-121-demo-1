@@ -1,3 +1,4 @@
+//code organization inspired by https://jamesnyim.github.io/cmpm-121-demo-1/
 import "./style.css";
 
 const app: HTMLDivElement = document.querySelector("#app")!;
@@ -54,8 +55,10 @@ document.body.appendChild(upgradeBButton);
 upgradeCButton.textContent = `Purchase ${availableItems[2].name} (${availableItems[2].cost} rocks)`;
 document.body.appendChild(upgradeCButton);
 upgradeDButton.textContent = `Purchase ${availableItems[3].name} (50 rocks),\n drills increases rocks per click by 1`;
+upgradeDButton.style.width = "350px";
 document.body.appendChild(upgradeDButton);
 upgradeEButton.textContent = `Purchase ${availableItems[4].name} (150 rocks),\n negotiator decreases price of everything by 10%, max negotiator is 6`;
+upgradeEButton.style.width = "300px";
 document.body.appendChild(upgradeEButton);
 counter.textContent = `${RockCount} Moon Rocks`;
 app.append(counter);

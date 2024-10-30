@@ -86,7 +86,7 @@ upgradeDButton.addEventListener("click", () => {
     AddToCount(-50 * Math.pow(costGrowthRate, NumOfUpgrades[3]));
     NumOfUpgrades[3]++;
     RocksPerClick++;
-    upgradeDButton.textContent =  `Purchase ${availableItems[3].name} (${availableItems[3].cost * Math.pow(costGrowthRate, NumOfUpgrades[3])} rocks)`;
+    upgradeDButton.textContent = `Purchase ${availableItems[3].name} (${availableItems[3].cost * Math.pow(costGrowthRate, NumOfUpgrades[3])} rocks)`;
     updateUpgradeCounterTxt();
   }
 });
@@ -98,7 +98,7 @@ upgradeEButton.addEventListener("click", () => {
   ) {
     AddToCount(-150 * Math.pow(costGrowthRate, NumOfUpgrades[4]));
     NumOfUpgrades[4]++;
-    upgradeDButton.textContent =  `Purchase ${availableItems[3].name} (${availableItems[3].cost * Math.pow(costGrowthRate, NumOfUpgrades[3])} rocks)`;
+    upgradeDButton.textContent = `Purchase ${availableItems[3].name} (${availableItems[3].cost * Math.pow(costGrowthRate, NumOfUpgrades[3])} rocks)`;
     updateUpgradeCounterTxt();
   }
 });

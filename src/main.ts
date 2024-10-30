@@ -64,7 +64,6 @@ ClickButton.addEventListener("click", () => {
   AddToCount(RocksPerClick);
 });
 
-
 upgradeAButton.addEventListener("click", () => {
   upgradeButtonFunc(0, upgradeAButton);
 });

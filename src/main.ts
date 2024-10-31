@@ -20,31 +20,11 @@ interface Item {
 }
 
 const availableItems: Item[] = [
-  {
-    name: "Rover",
-    cost: 10,
-    rate: 0.1,
-    descrption: "increase by 0.1 rocks/sec",
-  },
-  { name: "Mine", cost: 100, rate: 2, descrption: "increase by 2 rocks/sec" },
-  {
-    name: "Colony",
-    cost: 1000,
-    rate: 50,
-    descrption: "increase by 50 rocks/sec",
-  },
-  {
-    name: "Driller",
-    cost: 50,
-    rate: 0,
-    descrption: "increases rocks per click by 1",
-  },
-  {
-    name: "Negotiator",
-    cost: 150,
-    rate: 0,
-    descrption: "decreases price of everything by 10%, max negotiator is 6",
-  },
+  { name: "Rover", cost: 10, rate: 0.1, descrption:"increase by 0.1 rocks/sec" },
+  { name: "Mine", cost: 100, rate: 2, descrption:"increase by 2 rocks/sec" },
+  { name: "Colony", cost: 1000, rate: 50, descrption:"increase by 50 rocks/sec" },
+  { name: "Driller", cost: 50, rate: 0, descrption: "increases rocks per click by 1" },
+  { name: "Negotiator", cost: 150, rate: 0, descrption: "decreases price of everything by 10%, max negotiator is 6"},
 ];
 
 const numUpgrades = 5;

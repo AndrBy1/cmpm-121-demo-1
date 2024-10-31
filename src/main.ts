@@ -26,6 +26,7 @@ const availableItems: Item[] = [
   { name: "Negotiator", cost: 150, rate: 0 },
 ];
 
+const numUpgrades = 5;
 const drillDesc = document.createElement("div");
 const negotiDesc = document.createElement("div");
 const upgradeCounter = document.createElement("div");
@@ -36,6 +37,18 @@ const DisplayName = document.createElement("h1");
 DisplayName.innerHTML = gameName;
 app.append(DisplayName);
 const ClickButton = document.createElement("button");
+const upgradeButtons = Array.from({ length: numUpgrades }, () => document.createElement("button"));
+ClickButton.textContent = "🌝"; //smily moon emoji
+ClickButton.style.fontSize = "40px";
+app.append(ClickButton);
+app.append("\n");
+upgradeButtons.forEach((button, i) => {
+  button.innerHTML = `Upgrade ${availableItems[i].name}`;
+  button.addEventListener("click", () => {
+    console.log(`Upgrade ${availableItems[i].name} clicked`);
+  });
+  app.appendChild(button);
+});
 const upgradeAButton = document.createElement("button");
 const upgradeBButton = document.createElement("button");
 const upgradeCButton = document.createElement("button");
@@ -44,10 +57,7 @@ const upgradeEButton = document.createElement("button");
 const counter = document.createElement("div");
 const rateCounter = document.createElement("div");
 
-ClickButton.textContent = "🌝"; //smily moon emoji
-ClickButton.style.fontSize = "40px";
-app.append(ClickButton);
-app.append("\n");
+
 upgradeAButton.textContent = `Purchase ${availableItems[0].name} (${availableItems[0].cost} rocks)`;
 document.body.appendChild(upgradeAButton);
 upgradeBButton.textContent = `Purchase ${availableItems[1].name} (${availableItems[1].cost} rocks)`;

@@ -37,7 +37,9 @@ const DisplayName = document.createElement("h1");
 DisplayName.innerHTML = gameName;
 app.append(DisplayName);
 const ClickButton = document.createElement("button");
-const upgradeButtons = Array.from({ length: numUpgrades }, () => document.createElement("button"));
+const upgradeButtons = Array.from({ length: numUpgrades }, () =>
+  document.createElement("button"),
+);
 ClickButton.textContent = "🌝"; //smily moon emoji
 ClickButton.style.fontSize = "40px";
 app.append(ClickButton);
@@ -56,7 +58,6 @@ const upgradeDButton = document.createElement("button");
 const upgradeEButton = document.createElement("button");
 const counter = document.createElement("div");
 const rateCounter = document.createElement("div");
-
 
 upgradeAButton.textContent = `Purchase ${availableItems[0].name} (${availableItems[0].cost} rocks)`;
 document.body.appendChild(upgradeAButton);

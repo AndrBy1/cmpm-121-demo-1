@@ -20,31 +20,11 @@ interface Item {
 }
 
 const availableItems: Item[] = [
-  {
-    name: "Rover",
-    cost: 10,
-    rate: 0.1,
-    descrption: "increase by 0.1 rocks/sec",
-  },
-  { name: "Mine", cost: 100, rate: 2, descrption: "increase by 2 rocks/sec" },
-  {
-    name: "Colony",
-    cost: 1000,
-    rate: 50,
-    descrption: "increase by 50 rocks/sec",
-  },
-  {
-    name: "Driller",
-    cost: 50,
-    rate: 0,
-    descrption: "increases rocks per click by 1",
-  },
-  {
-    name: "Negotiator",
-    cost: 150,
-    rate: 0,
-    descrption: "decreases price of everything by 10%, max negotiator is 6",
-  },
+  { name: "Rover", cost: 10, rate: 0.1, descrption:"(cost 10 rocks) increase by 0.1 rocks/sec" },
+  { name: "Mine", cost: 100, rate: 2, descrption:"(cost 100 rocks) increase by 2 rocks/sec" },
+  { name: "Colony", cost: 1000, rate: 50, descrption:"(cost 1000 rocks) increase by 50 rocks/sec" },
+  { name: "Driller", cost: 50, rate: 0, descrption: "(cost 50 rocks) increases rocks per click by 1" },
+  { name: "Negotiator", cost: 150, rate: 0, descrption: "(cost 150 rocks) decreases price of everything by 10%, max negotiator is 6"},
 ];
 
 const numUpgrades = 5;
@@ -58,6 +38,9 @@ const DisplayName = document.createElement("h1");
 DisplayName.innerHTML = gameName;
 app.append(DisplayName);
 const ClickButton = document.createElement("button");
+const counter = document.createElement("div");
+const rateCounter = document.createElement("div");
+
 const upgradeButtons = Array.from({ length: numUpgrades }, () =>
   document.createElement("button"),
 );
@@ -65,9 +48,13 @@ ClickButton.textContent = "🌝"; //smily moon emoji
 ClickButton.style.fontSize = "40px";
 app.append(ClickButton);
 app.append("\n");
+counter.textContent = `${RockCount} Moon Rocks`;
+app.append(counter);
+rateCounter.textContent = `${RockPerSecRate} Moon Rocks/sec`;
+app.append(rateCounter);
 upgradeButtons.forEach((button, i) => {
   button.innerHTML = `Upgrade ${availableItems[i].name}, ${availableItems[i].descrption}`;
-  button.style.width = "240px";
+  button.style.width = "310px";
   button.addEventListener("click", () => {
     upgradeButtonFunc(i, button);
     console.log(`Upgrade ${availableItems[i].name} clicked`);
@@ -79,8 +66,7 @@ const upgradeBButton = document.createElement("button");
 const upgradeCButton = document.createElement("button");
 const upgradeDButton = document.createElement("button");
 const upgradeEButton = document.createElement("button");
-const counter = document.createElement("div");
-const rateCounter = document.createElement("div");
+
 
 upgradeAButton.textContent = `Purchase ${availableItems[0].name} (${availableItems[0].cost} rocks)`;
 document.body.appendChild(upgradeAButton);
@@ -94,10 +80,7 @@ document.body.appendChild(upgradeDButton);
 upgradeEButton.textContent = `Purchase ${availableItems[4].name} (150 rocks),\n negotiator decreases price of everything by 10%, max negotiator is 6`;
 upgradeEButton.style.width = "300px";
 document.body.appendChild(upgradeEButton);
-counter.textContent = `${RockCount} Moon Rocks`;
-app.append(counter);
-rateCounter.textContent = `${RockPerSecRate} Moon Rocks/sec`;
-app.append(rateCounter);
+
 
 ClickButton.addEventListener("click", () => {
   AddToCount(RocksPerClick);

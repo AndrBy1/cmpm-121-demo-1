@@ -55,12 +55,26 @@ app.append(rateCounter);
 upgradeButtons.forEach((button, i) => {
   button.innerHTML = `Upgrade ${availableItems[i].name}, ${availableItems[i].descrption}`;
   button.style.width = "310px";
+  
   button.addEventListener("click", () => {
-    upgradeButtonFunc(i, button);
-    console.log(`Upgrade ${availableItems[i].name} clicked`);
+    if(i == 3){
+      IncRocksPerClick(button);
+    }else if(i == 4){
+      IncNegotiator(button);
+    }else{
+      upgradeButtonFunc(i, button);
+      console.log(`Upgrade ${availableItems[i].name} clicked`);
+    }
+    
   });
   app.appendChild(button);
 });
+
+
+ClickButton.addEventListener("click", () => {
+  AddToCount(RocksPerClick);
+});
+/*
 const upgradeAButton = document.createElement("button");
 const upgradeBButton = document.createElement("button");
 const upgradeCButton = document.createElement("button");
@@ -82,9 +96,6 @@ upgradeEButton.style.width = "300px";
 document.body.appendChild(upgradeEButton);
 
 
-ClickButton.addEventListener("click", () => {
-  AddToCount(RocksPerClick);
-});
 
 upgradeAButton.addEventListener("click", () => {
   upgradeButtonFunc(0, upgradeAButton);
@@ -108,6 +119,7 @@ upgradeDButton.addEventListener("click", () => {
   }
 });
 
+
 upgradeEButton.addEventListener("click", () => {
   if (
     RockCount >= 150 * Math.pow(costGrowthRate, NumOfUpgrades[4]) &&
@@ -119,6 +131,30 @@ upgradeEButton.addEventListener("click", () => {
     updateUpgradeCounterTxt();
   }
 });
+*/
+
+function IncRocksPerClick(button:HTMLButtonElement)
+{
+  if (RockCount >= 50 * Math.pow(costGrowthRate, NumOfUpgrades[3])) {
+    AddToCount(-50 * Math.pow(costGrowthRate, NumOfUpgrades[3]));
+    NumOfUpgrades[3]++;
+    RocksPerClick++;
+    button.textContent = `Purchase ${availableItems[3].name} (${availableItems[3].cost * Math.pow(costGrowthRate, NumOfUpgrades[3])} rocks)`;
+    updateUpgradeCounterTxt();
+  }
+}
+
+function IncNegotiator(button:HTMLButtonElement){
+  if (
+    RockCount >= 150 * Math.pow(costGrowthRate, NumOfUpgrades[4]) &&
+    NumOfUpgrades[4] <= 6
+  ) {
+    AddToCount(-150 * Math.pow(costGrowthRate, NumOfUpgrades[4]));
+    NumOfUpgrades[4]++;
+    button.textContent = `Purchase ${availableItems[3].name} (${availableItems[3].cost * Math.pow(costGrowthRate, NumOfUpgrades[3])} rocks)`;
+    updateUpgradeCounterTxt();
+  }
+}
 
 function updateUpgradeCounterTxt() {
   upgradeCounter.textContent = `${availableItems[0].name}: ${NumOfUpgrades[0]}, ${availableItems[1].name}: ${NumOfUpgrades[1]}, ${availableItems[2].name}: ${NumOfUpgrades[2]}, ${availableItems[3].name}: ${NumOfUpgrades[3]}, ${availableItems[4].name}: ${NumOfUpgrades[4]}`;

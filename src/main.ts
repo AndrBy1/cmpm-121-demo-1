@@ -72,64 +72,6 @@ upgradeButtons.forEach((button, i) => {
 ClickButton.addEventListener("click", () => {
   AddToCount(RocksPerClick);
 });
-/*
-const upgradeAButton = document.createElement("button");
-const upgradeBButton = document.createElement("button");
-const upgradeCButton = document.createElement("button");
-const upgradeDButton = document.createElement("button");
-const upgradeEButton = document.createElement("button");
-
-
-upgradeAButton.textContent = `Purchase ${availableItems[0].name} (${availableItems[0].cost} rocks)`;
-document.body.appendChild(upgradeAButton);
-upgradeBButton.textContent = `Purchase ${availableItems[1].name} (${availableItems[1].cost} rocks)`;
-document.body.appendChild(upgradeBButton);
-upgradeCButton.textContent = `Purchase ${availableItems[2].name} (${availableItems[2].cost} rocks)`;
-document.body.appendChild(upgradeCButton);
-upgradeDButton.textContent = `Purchase ${availableItems[3].name} (50 rocks),\n drills increases rocks per click by 1`;
-upgradeDButton.style.width = "350px";
-document.body.appendChild(upgradeDButton);
-upgradeEButton.textContent = `Purchase ${availableItems[4].name} (150 rocks),\n negotiator decreases price of everything by 10%, max negotiator is 6`;
-upgradeEButton.style.width = "300px";
-document.body.appendChild(upgradeEButton);
-
-
-
-upgradeAButton.addEventListener("click", () => {
-  upgradeButtonFunc(0, upgradeAButton);
-});
-
-upgradeBButton.addEventListener("click", () => {
-  upgradeButtonFunc(1, upgradeBButton);
-});
-
-upgradeCButton.addEventListener("click", () => {
-  upgradeButtonFunc(2, upgradeCButton);
-});
-
-upgradeDButton.addEventListener("click", () => {
-  if (RockCount >= 50 * Math.pow(costGrowthRate, NumOfUpgrades[3])) {
-    AddToCount(-50 * Math.pow(costGrowthRate, NumOfUpgrades[3]));
-    NumOfUpgrades[3]++;
-    RocksPerClick++;
-    upgradeDButton.textContent = `Purchase ${availableItems[3].name} (${availableItems[3].cost * Math.pow(costGrowthRate, NumOfUpgrades[3])} rocks)`;
-    updateUpgradeCounterTxt();
-  }
-});
-
-
-upgradeEButton.addEventListener("click", () => {
-  if (
-    RockCount >= 150 * Math.pow(costGrowthRate, NumOfUpgrades[4]) &&
-    NumOfUpgrades[4] <= 6
-  ) {
-    AddToCount(-150 * Math.pow(costGrowthRate, NumOfUpgrades[4]));
-    NumOfUpgrades[4]++;
-    upgradeDButton.textContent = `Purchase ${availableItems[3].name} (${availableItems[3].cost * Math.pow(costGrowthRate, NumOfUpgrades[3])} rocks)`;
-    updateUpgradeCounterTxt();
-  }
-});
-*/
 
 function IncRocksPerClick(button:HTMLButtonElement)
 {

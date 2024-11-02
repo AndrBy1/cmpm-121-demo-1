@@ -24,7 +24,7 @@ const availableItems: Item[] = [
   { name: "Mine", cost: 100, rate: 2, descrption:"(cost 100 rocks) increase by 2 rocks/sec" },
   { name: "Colony", cost: 1000, rate: 50, descrption:"(cost 1000 rocks) increase by 50 rocks/sec" },
   { name: "Driller", cost: 50, rate: 0, descrption: "(cost 50 rocks) increases rocks per click by 1" },
-  { name: "Negotiator", cost: 150, rate: 0, descrption: "(cost 150 rocks) decreases price of everything by 10%, max negotiator is 6"},
+  { name: "Negotiator", cost: 150, rate: 0, descrption: "(cost 150 rocks) decreases price of everything by 1, max negotiator is 6"},
 ];
 
 const numUpgrades = 5;
@@ -65,11 +65,9 @@ upgradeButtons.forEach((button, i) => {
       upgradeButtonFunc(i, button);
       console.log(`Upgrade ${availableItems[i].name} clicked`);
     }
-    
   });
   app.appendChild(button);
 });
-
 
 ClickButton.addEventListener("click", () => {
   AddToCount(RocksPerClick);
@@ -145,10 +143,8 @@ function IncRocksPerClick(button:HTMLButtonElement)
 }
 
 function IncNegotiator(button:HTMLButtonElement){
-  if (
-    RockCount >= 150 * Math.pow(costGrowthRate, NumOfUpgrades[4]) &&
-    NumOfUpgrades[4] <= 6
-  ) {
+  if (RockCount >= 150 * Math.pow(costGrowthRate, NumOfUpgrades[4]) &&
+    NumOfUpgrades[4] <= 6) {
     AddToCount(-150 * Math.pow(costGrowthRate, NumOfUpgrades[4]));
     NumOfUpgrades[4]++;
     button.textContent = `Purchase ${availableItems[3].name} (${availableItems[3].cost * Math.pow(costGrowthRate, NumOfUpgrades[3])} rocks)`;
@@ -162,13 +158,13 @@ function updateUpgradeCounterTxt() {
 
 function upgradeButtonFunc(type: number, button: HTMLButtonElement) {
   const calculate =
-    availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type]);
+    (availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type])) - NumOfUpgrades[4];
   console.log(calculate);
   if (RockCount >= calculate) {
     RockPerSecRate += availableItems[type].rate;
     NumOfUpgrades[type]++;
     AddToCount(-calculate);
-    button.textContent = `Purchase ${availableItems[type].name} (${availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type])} rocks)`;
+    button.textContent = `Purchase ${availableItems[type].name} (${(availableItems[type].cost * Math.pow(costGrowthRate, NumOfUpgrades[type])) - NumOfUpgrades[4]} rocks)`;
     upgrade();
   }
 }
